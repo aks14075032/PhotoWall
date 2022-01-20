@@ -6,16 +6,15 @@ function Photo(props) {
                 <img className="photo" src={post.imageLink} alt={post.description}/>
                 <figcaption><p> {post.description} </p></figcaption>
                 <div className="button-container">
-                    <button className="remove-button" onClick={() => {
-                        props.onRemovePhoto(post)
+                    <button onClick={() => {
+                        props.removePost(props.index)
                     }}>Remove</button>
                 </div>
                </figure>
 }
 
 Photo.propTypes = {
-    post: PropTypes.object.isRequired,
-    onRemovePhoto: PropTypes.func.isRequired
+    post: PropTypes.object.isRequired    
 }
 
 
