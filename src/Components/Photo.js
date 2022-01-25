@@ -1,14 +1,25 @@
 import react,{Component} from "react";
 import PropTypes from "prop-types";
+import {Link} from 'react-router-dom'
+import {useNavigate} from "react-router-dom"
+
 function Photo(props) {
+    let navigate = useNavigate()
     const post = props.post
     return <figure className="figure"> 
-                <img className="photo" src={post.imageLink} alt={post.description}/>
+                <Link to={`/single/${post.id}`}><img className="photo" src={post.imageLink} alt={post.description}/></Link>
                 <figcaption><p> {post.description} </p></figcaption>
                 <div className="button-container">
                     <button onClick={() => {
                         props.removePost(props.index)
+                        navigate('/');
                     }}>Remove</button>
+                    <Link className="button" to={`/single/${post.id}`}>
+                        <div className="comment-count">
+                            <div className="speech-bubble"></div>
+                            {props.comments[post.id] ? props.comments[post.id].length : 0}
+                        </div>
+                    </Link>
                 </div>
                </figure>
 }

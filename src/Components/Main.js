@@ -6,6 +6,7 @@ import {Route, Routes, Link} from 'react-router-dom'
 import TitlePhotoWall from "./TitlePhotoWall";
 import OnAddPhoto from "./OnAddPhoto";
 import {removePost} from '../redux/actions'
+import Single from "./Single";
 
 class Main extends Component {
     constructor() {
@@ -13,15 +14,16 @@ class Main extends Component {
     } 
 
     render(){
-      console.log(this.props.posts)
       return (
             <>
                 <h1>
-                  <Link to='/'>Photowall</Link>
+
+                  <Link to='/'>Manchester United Fanwall</Link>
                 </h1>
                 <Routes>
                   <Route exact path = "/" element = {<TitlePhotoWall {...this.props}/>}/>  
                   <Route path = "/AddPhoto" element = {<OnAddPhoto {...this.props} /> } />
+                  <Route path="/Single/:id" element = {<Single {...this.props} /> }/> 
                 </Routes>
             </>
       )
